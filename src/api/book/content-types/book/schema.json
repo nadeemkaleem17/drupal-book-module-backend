@@ -4,7 +4,8 @@
   "info": {
     "singularName": "book",
     "pluralName": "books",
-    "displayName": "Book"
+    "displayName": "Book",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,6 +25,21 @@
       "relation": "oneToMany",
       "target": "api::page.page",
       "mappedBy": "bookId"
+    },
+    "user": {
+      "type": "integer"
+    },
+    "OwnerUser": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "books"
+    },
+    "sharedWithUsers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "books"
     }
   }
 }
